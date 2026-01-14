@@ -269,6 +269,11 @@ class StockAnalyzerOBV:
             
             # find start index, date and price
             index_entry = next((i for i, d in enumerate(df_dict) if d['Date'] == date_detection), -1) + int(not bool_detect_buy)
+
+            if index_entry >= len(df_dict):
+                print("Accumulation detected for tomorrow, not shown today")
+                continue
+
             date_buy = df_dict[index_entry]['Date']
             price_buy = df_dict[index_entry]['Close'] 
 
@@ -336,6 +341,11 @@ class StockAnalyzerOBV:
             
             # find start index, date and price
             index_entry = next((i for i, d in enumerate(df_dict) if d['Date'] == date_detection), -1) + int(not bool_detect_buy)
+            
+            if index_entry >= len(df_dict):
+                print("Accumulation detected for tomorrow, not shown today")
+                continue
+
             date_buy = df_dict[index_entry]['Date']
             price_buy = df_dict[index_entry]['Close'] 
 
